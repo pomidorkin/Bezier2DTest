@@ -18,12 +18,15 @@ public class BezierFollow : MonoBehaviour
 
     private bool coroutineAllowed;
 
+    private bool loopEnabled;
+
     private void Start()
     {
         routeToGo = 0;
         tParam = 0f;
         speedModifier = 0.5f;
         coroutineAllowed = true;
+        loopEnabled = true;
     }
 
     private void Update()
@@ -76,14 +79,19 @@ public class BezierFollow : MonoBehaviour
 
         }
 
-        tParam = 0f;
-        routeToGo += 1;
-
-        if(routeToGo > routes.Length - 1)
+        if (loopEnabled)
         {
-            routeToGo = 0;
+
+            tParam = 0f;
+            routeToGo += 1;
+
+            if (routeToGo > routes.Length - 1)
+            {
+                routeToGo = 0;
+            }
+
+            coroutineAllowed = true;
         }
 
-        coroutineAllowed = true;
     }
 }
