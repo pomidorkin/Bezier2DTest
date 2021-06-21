@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class BezierFollow : MonoBehaviour
 {
-    [SerializeField]
-    Transform[] routes;
+    [SerializeField] Transform[] routes;
 
     private int routeToGo;
 
     private float tParam;
 
-    private Vector2 objectPosition;
-    private Vector2 lookPosition; //test
+    private Vector3 objectPosition;
+    private Vector3 lookPosition; //test
 
     private float speedModifier;
 
@@ -41,12 +40,12 @@ public class BezierFollow : MonoBehaviour
     {
         coroutineAllowed = false;
 
-        Vector2 p0 = routes[routeNumber].GetChild(0).position;
-        Vector2 p1 = routes[routeNumber].GetChild(1).position;
-        Vector2 p2 = routes[routeNumber].GetChild(2).position;
-        Vector2 p3 = routes[routeNumber].GetChild(3).position;
+            Vector3 p0 = routes[routeNumber].GetChild(0).position;
+            Vector3 p1 = routes[routeNumber].GetChild(1).position;
+            Vector3 p2 = routes[routeNumber].GetChild(2).position;
+            Vector3 p3 = routes[routeNumber].GetChild(3).position;
 
-        while(tParam < 1)
+        while (tParam < 1)
         {
             tParam += Time.deltaTime * speedModifier;
 
